@@ -387,6 +387,7 @@ body {
     font-size: 15px;
     margin-bottom: @content-padding;
     background: white;
+    .transition;
 
     &:focus {
       outline: none;
@@ -416,6 +417,27 @@ body {
     width: 100%;
     font-family: Roboto;
     font-size: 15px;
+    .transition;
+
+    &.custom {
+      height: 0px;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+
+      &.open {
+        height: 40px;
+        opacity: 1;
+        padding: @content-padding;
+        border: 2px solid #ddd;
+
+        &:focus {
+          outline: none;
+          border-color: @main-color;
+    }
+      }
+    }
 
     &:focus {
       outline: none;
