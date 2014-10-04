@@ -9,3 +9,11 @@ $(document).ready( function() {
   });
 
 });
+
+function checkUserInput(val){
+ var element=document.getElementById('time');
+ if(val=='Custom')
+   element.style.display='block';
+ else  
+   element.style.display='none';
+}
