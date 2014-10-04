@@ -1,10 +1,13 @@
 @global-height: 500px;
 @global-width: 500px;
-@univ-padding: 20px;
+@univ-padding: 0;
 @tab-height: 60px;
 
-@dark-text-color: #222;
+@dark-text-color: #CCCCCC;
 @light-text-color: #999;
+
+@background-color: #EEEEEE; 
+@darker-background: #CCCCCC; 
 
 
 * {
@@ -53,7 +56,7 @@ body {
   left: @univ-padding;
   bottom: 0; //might wanna change
   right: @univ-padding;
-  background: black;
+  background: @background-color;
 }
 
 .tab-row {
@@ -65,6 +68,17 @@ body {
   width: 33.5%;
   height: 100%;
   display: inline-block;
-  background:blue;
+  background: white;
   margin-right: -5px;
+  border-style: solid;  
+  border-color: @background-color; 
+  border-top: 0; 
+  border-left: 0; 
+  border-bottom-color: @darker-background; 
+  text-align: center; 
+  padding-top: @tab-height/2; 
+}
+
+#noRightBorder {
+  border-right: 0; 
 }
