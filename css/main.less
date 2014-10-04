@@ -1,10 +1,15 @@
 @global-height: 500px;
 @global-width: 500px;
-@univ-padding: 20px;
+@univ-padding: 0;
 @tab-height: 60px;
+@tab-padding: @tab-height/3;
 
-@dark-text-color: #222;
+@dark-text-color: #CCCCCC;
 @light-text-color: #999;
+@main-color: #e74c3c;
+
+@background-color: #EEEEEE;
+@darker-background: #CCCCCC;
 
 
 * {
@@ -57,7 +62,7 @@ body {
   left: @univ-padding;
   bottom: 0; //might wanna change
   right: @univ-padding;
-  background: black;
+  background: @background-color;
 }
 
 .tab-row {
@@ -68,13 +73,26 @@ body {
 .tab {
   width: 33.5%;
   height: 100%;
+  padding-top: @tab-padding;
   display: inline-block;
-  background:blue;
+  background: white;
   margin-right: -5px;
+  border: 2px solid @background-color;
+  border-top: 0;
+  border-left: 0;
+  border-bottom-color: white;
+
+  text-align: center;
+  line-height: @tab-padding;
+  font-size: 16px;
+
   .transition;
 
+  &:last-child {
+    border-right: 0;
+  }
   &.active {
-    background: red;
+    border-bottom-color: @main-color;
   }
 }
 
@@ -86,13 +104,11 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: green;
-  .transition;
+  .transition-long;
 
   &.active {
     .transition;
     z-index:10;
     opacity: 1;
-    background: blue;
   }
 }
