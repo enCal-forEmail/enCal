@@ -123,6 +123,7 @@ body {
 
   .recent-item {
     width: 100%;
+    position: relative;
     padding: @content-padding;
     background: white;
     margin-bottom: @content-padding;
@@ -158,5 +159,17 @@ body {
       }
     }
 
+    .item-info {
+      position: absolute;
+      top: @content-padding;
+      left: 60 + 2*@content-padding;
+      right: @content-padding;
+      bottom: @content-padding;
+
+      .title {
+        line-height: 30px;
+        font-size: 20px;
+      }
+    }
   }
 }
