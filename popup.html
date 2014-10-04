@@ -18,49 +18,66 @@
 <body>
   <div id="content">
     <div class="tab-row">
-      <div class="tab" data-type="Recent">Recently Added</div>
+      <div class="tab active" data-type="Recent">Recently Added</div>
       <div class="tab" data-type="All">All Events</div>
       <div class="tab" data-type="Errors">Conflicts</div>
     </div>
-    <div class="tab-content" data-type="Recent">
+    <div class="tab-content active" data-type="Recent">
       <div class="recent-item">
         <div class="cal-icon">
           <div class="cal-icon-header">OCT</div>
           <div class="cal-icon-date">12</div>
         </div>
+        <div class="item-info">
+          <div class="title">Party at Frosoco</div>
+          <div class="time">5:00 PM</div>
+          <div class="location">Palo Alto, CA</div>
+        </div>
       </div>
-      <div class="recent-item">asd</div>
-      <div class="recent-item">asd</div>
-      <div class="recent-item">asd</div>
-      <div class="recent-item">asd</div>
-      <div class="recent-item">asd</div>
 
+      <div class="recent-item">
+        <div class="cal-icon">
+          <div class="cal-icon-header">OCT</div>
+          <div class="cal-icon-date">12</div>
+        </div>
+        <div class="item-info">
+          <div class="title">Party at Frosoco</div>
+          <div class="time">5:00 PM</div>
+          <div class="location">Palo Alto, CA</div>
+        </div>
+      </div>
+
+      <div class="recent-item">asd</div>
+      <div class="recent-item">asd</div>
+      <div class="recent-item">asd</div>
+      <div class="recent-item">asd</div>
+      <div class="recent-item">asd</div>
     </div>
     <div class="tab-content" data-type="All">Ass</div>
     <div class="tab-content" data-type="Errors">
-        <div class="cal-small">
-          <div class="cal-small-header">OCT</div>
-          <div class="cal-small-date">12</div>
-        </div>
-        
-        <fieldset>
-          <form name="Title" onsubmit="return validateForm()" method="post">
-          Title: <input type="text" name="Title";>
+      <!-- Error Conflict Form --> 
+          <div class="cal-small">
+              <div class="cal-small-header">OCT</div>
+              <div class="cal-small-date">12</div>
+             <div class = "conflict-info">  </div>
+          </div>
+                 <fieldset>
+              <form class ="title" name="Title" onsubmit="return validateForm()" method="post">
+              Title: <input type="text" name="Title";>
+                <label class = "time" for "time">Time: </label> 
+                <select name="time" onchange='checkUserInput(this.value);'>
+                  <option>12:00pm - 3:30pm</option>
+                  <option>3:20am - 9:30pm</option> 
+                  <option>Custom</option> 
+                </select>
+                <input type="text" name="time" id="time" style='display:none';/></br>
 
-            <label for "time">Time: </label> 
-            <select name="time" onchange='checkUserInput(this.value);'>
-              <option>12:00pm - 3:30pm</option>
-              <option>3:20am - 9:30pm</option> 
-              <option>Custom</option> 
-            </select>
-            <input type="text" name="time" id="time" style='display:none';/>
+              <form class = "location" name="Location" onsubmit="return validateForm()" method="post" >
+              Location: <input type="text" name="Location" style="width: 60%";>
+            </fieldset>
 
-          <form name="Location" onsubmit="return validateForm()" method="post" >
-          Location: <input type="text" name="Location" style="width: 60%";>
+    <!-- Error Conflict End --> 
+          
 
-        </fieldset>
-
-    </div> 
-  </div>
 </body>
 </html>
