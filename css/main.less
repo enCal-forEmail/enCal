@@ -80,6 +80,8 @@ body {
 }
 
 .tab {
+  position: relative;
+  z-index: 0;
   width: 33.5%;
   height: 100%;
   padding-top: @tab-padding;
@@ -342,6 +344,7 @@ body {
 }
 
 select {
+  display: block;
   border: 0;
   font-family: 'Roboto', sans-serif;
 
@@ -349,4 +352,44 @@ select {
 
 fieldset {
   border: 0;
+}
+
+input {
+  display: block;
+}
+
+.edit-item-modal {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 100%;
+  left: @content-padding * 5;
+  right: @content-padding * 5;
+  height: calc(@global-height - @content-padding * 6);
+  background: white;
+  box-shadow: @box-shadow;
+  .transition-long;
+
+  &.open {
+    opacity: 1;
+    z-index: 10000;
+    top: @content-padding * 3;
+  }
+}
+
+.transparent-overlay {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  .transition-long;
+
+  &.open {
+    opacity: 1;
+    z-index: 1000;
+  }
 }

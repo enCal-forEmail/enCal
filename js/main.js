@@ -8,12 +8,20 @@ $(document).ready( function() {
     selectedContent.addClass("active");
   });
 
+  $(".conflict-item .edit-button").on("click", function() {
+    $(".edit-item-modal, .transparent-overlay").addClass("open");
+
+    $(".transparent-overlay").on("click", function() {
+      $(".edit-item-modal, .transparent-overlay").removeClass("open");
+    });
+  });
+
 });
 
 function checkUserInput(val){
  var element=document.getElementById('time');
  if(val=='Custom')
    element.style.display='block';
- else  
+ else
    element.style.display='none';
 }

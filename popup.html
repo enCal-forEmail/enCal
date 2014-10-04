@@ -69,29 +69,26 @@
         </div>
         <div class="edit-button"></div>
       </div>
-      <!-- Error Conflict Form -->
-          <div class="cal-small">
-              <div class="cal-small-header">OCT</div>
-              <div class="cal-small-date">12</div>
-             <div class = "conflict-info">  </div>
-          </div>
-                 <fieldset>
-              <form class ="title" name="Title" onsubmit="return validateForm()" method="post">
-              Title: <input type="text" name="Title";>
-                <label class = "time" for "time">Time: </label>
-                <select name="time" onchange='checkUserInput(this.value);'>
-                  <option>12:00pm - 3:30pm</option>
-                  <option>3:20am - 9:30pm</option>
-                  <option>Custom</option>
-                </select>
-                <input type="text" name="time" id="time" style='display:none';/></br>
+  </div>
 
-              <form class = "location" name="Location" onsubmit="return validateForm()" method="post" >
-              Location: <input type="text" name="Location" style="width: 60%";>
-            </fieldset>
+  <div class="edit-item-modal">
+    <fieldset>
+      <form class ="title" name="Title" onsubmit="return validateForm()" method="post">
+      Title: <input type="text" name="Title";>
+        <label class = "time" for "time">Time: </label>
+        <select name="time" onchange='checkUserInput(this.value);'>
+          <option>12:00pm - 3:30pm</option>
+          <option>3:20am - 9:30pm</option>
+          <option>Custom</option>
+        </select>
+        <input type="text" name="time" id="time" style='display:none';/></br>
 
-    <!-- Error Conflict End -->
-
+      <form class = "location" name="Location" onsubmit="return validateForm()" method="post" >
+      Location
+      <input type="text" name="Location" style="width: 60%";>
+    </fieldset>
+  </div>
+  <div class="transparent-overlay"></div>
 
 </body>
 </html>
