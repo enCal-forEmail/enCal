@@ -1,5 +1,5 @@
 @global-height: 500px;
-@global-width: 300px;
+@global-width: 400px;
 @univ-padding: 0;
 
 @content-padding: 10px;
@@ -15,7 +15,7 @@
 @background-color: #EEEEEE;
 @darker-background: #CCCCCC;
 
-@broken-red: #FF998E; 
+@broken-red: #FF998E;
 @broken-gray: #F5F5F5;
 
 @box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -90,7 +90,7 @@ body {
   padding-top: @tab-padding;
   display: inline-block;
   background: white;
-  margin-right: -5px;
+  margin-right: -4px;
   border-bottom: 2px solid transparent;
 
   text-align: center;
@@ -101,14 +101,16 @@ body {
   &:before {
     position: absolute;
     top:0;
-    right: 1px;
+    right: 0px;
     width: 1px;
     height: 100%;
     background: @background-color;
     content: "";
   }
   &:last-child {
-    border-right: 0;
+    &:before {
+      width: 0;
+    }
   }
   &.active {
     border-bottom: 2px solid @main-color;
@@ -206,12 +208,25 @@ body {
       .time:before { content: "\f017"; }
       .location:before { content: "\f041"; }
     }
+
+    .recent-item-marker{
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      bottom:@content-padding;
+      right: @content-padding;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+      background-color: @main-color;
+      display: block;
+    }
   }
 
   .conflict-item {
-    border: 2px;
+    /*border: 2px;
     border-style: solid;
-    border-color: #e74c3c;
+    border-color: #e74c3c;*/
     position: relative;
 
     .edit-button {
@@ -283,29 +298,25 @@ body {
       }
 }
 
-.recent-item-marker{
-    position: absolute; 
-    width: 10px;
-    height: 10px;
-    margin-left: 88%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px; 
-    background-color: @main-color;
-    display: block;
+.broken-id-header {
+  background-color: @broken-red!important;
 }
-
-#broken-id-header {
-  background-color: @broken-red; 
-}
-#broken-id-date {
-  color: @darker-background; 
+.broken-id-date {
+  color: @darker-background!important;
 }
 
 #save-button {
-  color: white; 
-  margin-left: 50%; 
-  width: 50%; 
+  color: white;
+  margin-top: @content-padding*2;
+  height: 40px;
+  width: 100%;
+  border: none;
+  background-color: @main-color;
+
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
 }
 
@@ -314,8 +325,8 @@ body {
   z-index: -1;
   opacity: 0;
   top: 100%;
-  left: @content-padding * 5;
-  right: @content-padding * 5;
+  left: @content-padding * 3;
+  right: @content-padding * 3;
   height: calc(@global-height - @content-padding * 6);
   background: white;
   box-shadow: @box-shadow;
