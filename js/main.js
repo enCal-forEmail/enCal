@@ -1,5 +1,9 @@
 $(document).ready( function() {
 
+  chrome.browserAction.getBadgeText({}, function(res) {
+    console.log(res);
+  });
+
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
     var selectedContent = $(".tab-content[data-type='" + contentType + "']");
