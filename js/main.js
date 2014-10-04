@@ -27,6 +27,12 @@ $(document).ready( function() {
     checkUserInput(this.value);
   });
 
+$(".recent-item").hover(
+  function() {
+  }, function() {
+    $(this).find(".recent-item-marker").fadeOut(500);
+  });
+
 });
 
 function checkUserInput(val){
