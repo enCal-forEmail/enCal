@@ -29,3 +29,7 @@ function checkUserInput(val){
  else
    element.removeClass("open");
 }
+
+$( window ).unload(function() {
+  alert( "Bye now!" );
+});
