@@ -38,32 +38,29 @@
     </div>
     <div class="tab-content" data-type="All">Ass</div>
     <div class="tab-content" data-type="Errors">
-      <div> 
+        <div class="cal-small">
+          <div class="cal-small-header">OCT</div>
+          <div class="cal-small-date">12</div>
+        </div>
+        
         <fieldset>
-          <label for "time">Time: </label> 
-          <select name="time" onchange='checkUserInput(this.value);'>
-            <option>12:00pm - 3:30pm</option>
-            <option>3:20am - 9:30pm</option> 
-            <option>Custom</option> 
-          </select>
-        <input type="text" name="time" id="time" style='display:none;'/>
+          <form name="Title" onsubmit="return validateForm()" method="post">
+          Title: <input type="text" name="Title" style="width: 75%";></br>
 
-        <form name="Title" onsubmit="return validateForm()" method="post">
-        Title: <input type="text" name="Title">
+            <label for "time">Time: </label> 
+            <select name="time" onchange='checkUserInput(this.value);'>
+              <option>12:00pm - 3:30pm</option>
+              <option>3:20am - 9:30pm</option> 
+              <option>Custom</option> 
+            </select>
+            <input type="text" name="time" id="time" style='display:none';/>
 
-        <form name="Location" onsubmit="return validateForm()" method="post">
-        Location: <input type="text" name="Location">
-        <input type="submit" value="Save">
-        </form>
-
-        <form name="description" method="POST">
-          Description: <textarea name="description">
-          </textarea>
-        </form>
+          <form name="Location" onsubmit="return validateForm()" method="post" >
+          Location: <input type="text" name="Location" style="width: 60%";>
 
         </fieldset>
-      </div> 
-    </div>
+
+    </div> 
   </div>
 </body>
 </html>
