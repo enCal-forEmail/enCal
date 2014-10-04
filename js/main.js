@@ -23,9 +23,9 @@ $(document).ready( function() {
 });
 
 function checkUserInput(val){
- var element=document.getElementById('time');
+ var element=$("#time");
  if(val=='Custom')
-   element.style.display='block';
+   element.addClass("open");
  else
-   element.style.display='none';
+   element.removeClass("open");
 }
