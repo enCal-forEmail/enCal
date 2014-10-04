@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+
+  "name": "enCal",
+  "description": "Disrupting the calendar industry",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+  ]
+}
