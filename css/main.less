@@ -138,8 +138,6 @@ body {
 }
 
 .tab-content {
-  opacity: 0;
-  margin-top:-10px;
   position: absolute;
   z-index:0;
   padding: @content-padding;
@@ -150,8 +148,14 @@ body {
   overflow-y: auto;
   .transition-long;
 
+  &[data-type='Recent']:not(.active) {
+    left: -120%;
+  }
+  &[data-type='Errors']:not(.active) {
+    left: 120%;
+  }
+
   &.active {
-    margin-top: 0px;
     z-index:10;
     opacity: 1;
   }

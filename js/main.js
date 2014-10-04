@@ -6,6 +6,7 @@ $(document).ready( function() {
       $(".tab[data-type='Recent'").append('<div class="notif-badge">'+res+'</div>');
     }
   });
+  setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
