@@ -1,8 +1,11 @@
-@global-height: 600px;
-@global-width: 600px;
+@global-height: 500px;
+@global-width: 500px;
 @univ-padding: 20px;
-@dark-text-color: #000;
-@light-text-color: #fff;
+@tab-height: 60px;
+
+@dark-text-color: #222;
+@light-text-color: #999;
+
 
 * {
   -webkit-box-sizing: border-box;
@@ -44,3 +47,24 @@ body {
   width: 100%;
 }
 
+#content {
+  position: absolute;
+  top: @univ-padding;
+  left: @univ-padding;
+  bottom: 0; //might wanna change
+  right: @univ-padding;
+  background: black;
+}
+
+.tab-row {
+  width: 100%; // @global-height - 2*@univ-padding
+  height: @tab-height;
+}
+
+.tab {
+  width: 33.5%;
+  height: 100%;
+  display: inline-block;
+  background:blue;
+  margin-right: -5px;
+}
