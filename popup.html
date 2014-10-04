@@ -22,6 +22,7 @@
       <div class="tab" data-type="All">All Events</div>
       <div class="tab" data-type="Errors">Conflicts</div>
     </div>
+
     <div class="tab-content active" data-type="Recent">
       <div class="recent-item">
         <div class="cal-icon">
@@ -55,7 +56,20 @@
     </div>
     <div class="tab-content" data-type="All">Ass</div>
     <div class="tab-content" data-type="Errors">
-      <!-- Error Conflict Form --> 
+
+      <div class="conflict-item">
+        <div class="cal-icon">
+          <div class="cal-icon-header">OCT</div>
+          <div class="cal-icon-date">12</div>
+        </div>
+        <div class="item-info">
+          <div class="title">Party at Frosoco</div>
+          <div class="time">5:00 PM</div>
+          <div class="location">Palo Alto, CA</div>
+        </div>
+        <div class="edit-button"></div>
+      </div>
+      <!-- Error Conflict Form -->
           <div class="cal-small">
               <div class="cal-small-header">OCT</div>
               <div class="cal-small-date">12</div>
@@ -64,11 +78,11 @@
                  <fieldset>
               <form class ="title" name="Title" onsubmit="return validateForm()" method="post">
               Title: <input type="text" name="Title";>
-                <label class = "time" for "time">Time: </label> 
+                <label class = "time" for "time">Time: </label>
                 <select name="time" onchange='checkUserInput(this.value);'>
                   <option>12:00pm - 3:30pm</option>
-                  <option>3:20am - 9:30pm</option> 
-                  <option>Custom</option> 
+                  <option>3:20am - 9:30pm</option>
+                  <option>Custom</option>
                 </select>
                 <input type="text" name="time" id="time" style='display:none';/></br>
 
@@ -76,8 +90,8 @@
               Location: <input type="text" name="Location" style="width: 60%";>
             </fieldset>
 
-    <!-- Error Conflict End --> 
-          
+    <!-- Error Conflict End -->
+
 
 </body>
 </html>

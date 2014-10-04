@@ -10,6 +10,7 @@
 @dark-text-color: #CCCCCC;
 @light-text-color: #999;
 @main-color: #e74c3c;
+@icon-color: #aaa;
 
 @background-color: #EEEEEE;
 @darker-background: #CCCCCC;
@@ -102,6 +103,8 @@ body {
   &.active {
     border-bottom-color: @main-color;
   }
+
+  &:hover {cursor: pointer;}
 }
 
 .tab-content {
@@ -123,7 +126,8 @@ body {
     opacity: 1;
   }
 
-  .recent-item {
+  .recent-item,
+  .conflict-item {
     width: 100%;
     position: relative;
     padding: @content-padding;
@@ -192,6 +196,47 @@ body {
       .location:before { content: "\f041"; }
     }
   }
+
+  .conflict-item {
+    position: relative;
+
+    .edit-button {
+      display: none;
+      position: absolute;
+      top: @content-padding;
+      right: @content-padding;
+      height: 30px;
+      width: 30px;
+
+      &:before {
+        display: block;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        font-size:22px;
+        font-family: FontAwesome;
+        content: "\f040";
+        -webkit-font-smoothing: antialiased;
+        text-align: center;
+        color: @icon-color;
+      }
+    }
+
+    &:hover {
+      .edit-button {
+        display: block;
+
+        &:hover {
+          background-color: #eee;
+          cursor: pointer;
+
+          &:before {
+            color: black;
+          }
+        }
+      }
+    }
+  }
 }
 /*
   .conflict-item {
@@ -207,7 +252,7 @@ body {
 
     .cal-small {
       margin-top: 13px;
-      margin-left: 30px; 
+      margin-left: 30px;
       height: 30px;
       width: 30px;
       border-radius: 2px;
@@ -269,7 +314,7 @@ body {
 
 .cal-small {
       margin-top: 13px;
-      margin-left: 90%; 
+      margin-left: 90%;
       height: 30px;
       width: 30px;
       border-radius: 2px;
@@ -297,11 +342,11 @@ body {
 }
 
 select {
-  border: 0; 
+  border: 0;
   font-family: 'Roboto', sans-serif;
 
-} 
+}
 
 fieldset {
-  border: 0; 
+  border: 0;
 }
