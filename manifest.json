@@ -5,6 +5,10 @@
   "description": "Disrupting the calendar industry",
   "version": "1.0",
 
+  "background": {
+        "scripts": ["background.js"]
+    },
+
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
