@@ -2,6 +2,9 @@ $(document).ready( function() {
 
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
+    if (res) {
+      $(".tab[data-type='Recent'").append('<div class="notif-badge">'+res+'</div>');
+    }
   });
 
   $(".tab").on("click", function() {
