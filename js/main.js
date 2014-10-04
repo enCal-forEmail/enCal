@@ -8,12 +8,16 @@ $(document).ready( function() {
     selectedContent.addClass("active");
   });
 
-  $(".conflict-item .edit-button").on("click", function() {
+  $(".conflict-item").on("click", function() {
     $(".edit-item-modal, .transparent-overlay").addClass("open");
 
     $(".transparent-overlay").on("click", function() {
       $(".edit-item-modal, .transparent-overlay").removeClass("open");
     });
+  });
+
+  $("select").on('change', function(){
+    checkUserInput(this.value);
   });
 
 });
