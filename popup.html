@@ -72,21 +72,24 @@
   </div>
 
   <div class="edit-item-modal">
-    <fieldset>
-      <form class ="title" name="Title" onsubmit="return validateForm()" method="post">
-      Title: <input type="text" name="Title";>
-        <label class = "time" for "time">Time: </label>
-        <select name="time" onchange='checkUserInput(this.value);'>
-          <option>12:00pm - 3:30pm</option>
-          <option>3:20am - 9:30pm</option>
-          <option>Custom</option>
-        </select>
-        <input type="text" name="time" id="time" style='display:none';/></br>
+    <div class="modal-header">Fix Event</div>
+    <div class="modal-content">
+      <fieldset>
+        <form class ="title" name="Title" onsubmit="return validateForm()" method="post"><label>Title</label>
+          <input type="text" name="Title";>
+          <label class = "time" for "time">Time</label>
+          <select name="time" onchange='checkUserInput(this.value);'>
+            <option>12:00pm - 3:30pm</option>
+            <option>3:20am - 9:30pm</option>
+            <option>Custom</option>
+          </select>
+          <input type="text" name="time" id="time" style='display:none';/>
 
-      <form class = "location" name="Location" onsubmit="return validateForm()" method="post" >
-      Location
-      <input type="text" name="Location" style="width: 60%";>
-    </fieldset>
+        <form class = "location" name="Location" onsubmit="return validateForm()" method="post" >
+        <label>Location</label>
+        <input type="text" name="Location">
+      </fieldset>
+    </div>
   </div>
   <div class="transparent-overlay"></div>
 

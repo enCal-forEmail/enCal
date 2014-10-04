@@ -343,20 +343,7 @@ body {
       }
 }
 
-select {
-  display: block;
-  border: 0;
-  font-family: 'Roboto', sans-serif;
 
-}
-
-fieldset {
-  border: 0;
-}
-
-input {
-  display: block;
-}
 
 .edit-item-modal {
   position: fixed;
@@ -370,10 +357,73 @@ input {
   box-shadow: @box-shadow;
   .transition-long;
 
+  .modal-header {
+    width: 100%;
+    height: @tab-height;
+    padding: @tab-padding;
+    line-height: @tab-padding;
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+  }
+
+  .modal-content {
+    padding: @content-padding;
+  }
+
   &.open {
     opacity: 1;
     z-index: 10000;
     top: @content-padding * 3;
+  }
+
+  select {
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 60px!important;
+    font-family: 'Roboto', sans-serif;
+    height: 40px;
+    width: 100%;
+    margin-bottom: @content-padding;
+    background: white;
+
+    &:focus {
+      outline: none;
+      border-color: @main-color;
+    }
+
+    option {
+      &:hover {
+        background:black;
+      }
+    }
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: @content-padding;
+  }
+
+  input {
+    display: block;
+    margin-bottom: @content-padding;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: @content-padding;
+    height: 40px;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 15px;
+
+    &:focus {
+      outline: none;
+      border-color: @main-color;
+    }
+  }
+
+  label {
+    color: #999;
+    font-size: 15px;
   }
 }
 
