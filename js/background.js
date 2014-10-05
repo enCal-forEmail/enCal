@@ -41,7 +41,7 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
       },
       success: function(data) {
         user_email = data.email;
-        user_email_comma = user_email.replace('.',',')
+        user_email_comma = user_email.replace(/\./g, ',')
         console.log(user_email_comma);
 
         //User authentication with our server
@@ -54,6 +54,10 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
           function(data) {
             console.log("logged in")
             connectFirebase();
+              chrome.extension.onConnect.addListener(function(port) {
+                  console.log("Connected .....");
+                  chrome.runtime.sendMessage({email: user_email});
+              });
           }
         );
       }
@@ -72,10 +76,4 @@ function connectFirebase() {
     console.log('The read failed: ' + errorObject.code);
   });
 }
-
-
-
-
-
-
 

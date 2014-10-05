@@ -1,4 +1,10 @@
 $(document).ready( function() {
+    var email;
+
+    chrome.runtime.onMessage.addListener(
+        function(request, sender, sendResponse) {
+           email = request.email;
+        });
 
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
