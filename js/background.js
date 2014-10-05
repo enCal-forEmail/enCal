@@ -48,15 +48,13 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
     });
 
     //User authentication with our server
-/*
-    $.post(
-      url: BASE_URL + "/login",
-      data: {
-        email: user_email
-        accessToken: current_token
-      },
-    );
-*/
+    $.post({
+        url: BASE_URL + "/login",
+        data: {
+            email: user_email,
+            accessToken: current_token
+        }
+    });
 
     changeState(STATE_AUTHTOKEN_ACQUIRED);
   }
