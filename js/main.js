@@ -46,6 +46,40 @@ $(document).ready( function() {
 
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
+  var fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/andrewmillman35@gmail,com');
+  fb.once('value', function(snapshot) {
+    var all = snapshot.val();
+    for (item in all) {
+      console.log(all[item]);
+
+      var time = all[item]['Time Ranges'][0].start
+      var ampm;
+      if (time.substring(time.length - 2, time.length) == ":0") {
+        time = time + "0";
+      }
+
+      var timeInt = parseInt(time.substring(0, time.indexOf(':')))
+      if ( timeInt > 12 ) {
+        time = String(timeInt-12) + ":00";
+        ampm = " PM";
+      } else { ampm = " AM"}
+
+      $(".tab-content[data-type='Recent'").append(
+
+        '<div class="recent-item">' +
+          '<div class="cal-icon">' +
+            '<div class="cal-icon-header">'+ all[item]['Time Ranges'][0].startDate.substring(0,4) + '</div>' +
+            '<div class="cal-icon-date">'+ all[item]['Time Ranges'][0].startDate.substring(4,5) +'</div>' +
+          '</div>' +
+          '<div class="item-info">' +
+            '<div class="title">'+ all[item].Title +'</div>' +
+            '<div class="time">' + time + ampm +'</div>' +
+            '<div class="location">'+ all[item].Location +'</div>' +
+          '</div>'
+
+      );
+    }
+  })
 
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
