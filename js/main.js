@@ -40,6 +40,29 @@ chrome.browserAction.getBadgeText({}, function(res) {
     selectedContent.addClass("active");
   });
 
+  $(document).keydown(function(e) {
+    switch(e.which) {
+      case 37: //left arrow key
+        if ($(".tab-underline").hasClass("Errors")) {
+          $(".tab-underline").removeClass("Recent, Errors").addClass("Recent");
+          $(".tab, .tab-content").removeClass("active");
+          $(".tab").first().addClass("active");
+          $(".tab-content").first().addClass("active");
+        }
+        break;
+      case 39: //right arrow key
+        console.log("Asd");
+        if ($(".tab-underline").hasClass("Recent")) {
+          $(".tab-underline").removeClass("Recent, Errors").addClass("Errors");
+          $(".tab, .tab-content").removeClass("active");
+          $(".tab").last().addClass("active");
+          $(".tab-content").last().addClass("active");
+        }
+        break;
+    }
+
+  });
+
   $(".conflict-item").on("click", function() {
     $(".edit-item-modal, .transparent-overlay").addClass("open");
 
