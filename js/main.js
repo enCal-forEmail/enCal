@@ -27,6 +27,18 @@ $(document).ready( function() {
     for (item in all) {
       console.log(all[item]);
 
+      var time = all[item]['Time Ranges'][0].start
+      var ampm;
+      if (time.substring(time.length - 2, time.length) == ":0") {
+        time = time + "0";
+      }
+
+      var timeInt = parseInt(time.substring(0, time.indexOf(':')))
+      if ( timeInt > 12 ) {
+        time = String(timeInt-12) + ":00";
+        ampm = " PM";
+      } else { ampm = " AM"}
+
       $(".tab-content[data-type='Recent'").append(
 
         '<div class="recent-item">' +
@@ -36,7 +48,7 @@ $(document).ready( function() {
           '</div>' +
           '<div class="item-info">' +
             '<div class="title">'+ all[item].Title +'</div>' +
-            '<div class="time">5:00 PM</div>' +
+            '<div class="time">' + time + ampm +'</div>' +
             '<div class="location">'+ all[item].Location +'</div>' +
           '</div>'
 
