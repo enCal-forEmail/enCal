@@ -1,6 +1,6 @@
 
 var notifs = 0;
-var BASE_URL = "http://localhost:3000"
+var BASE_URL = "http://2784b8e6.ngrok.com";
 
 var user_email;
 var user_email_comma;
