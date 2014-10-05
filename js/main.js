@@ -4,7 +4,7 @@ $(document).ready( function() {
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
     if (res) {
-      var recentTab = $(".tab[data-type='Recent'], .tab[data-type='Errors'] ").append('<div class="notif-badge">'+res+'</div>');
+      var recentTab = $(".tab[data-type='Recent']").append('<div class="notif-badge">'+res+'</div>');
       var badge = recentTab.find(".notif-badge");
       badge.css("margin-left", -badge.width() / 2 - 3);
     }
@@ -20,6 +20,21 @@ $(document).ready( function() {
     var all = snapshot.val();
     for (item in all) {
       console.log(all[item]);
+
+      $(".tab-content[data-type='Recent'").append(
+
+        '<div class="recent-item">' +
+          '<div class="cal-icon">' +
+            '<div class="cal-icon-header">'+ all[item]['Time Ranges'][0].startDate.substring(0,4) + '</div>' +
+            '<div class="cal-icon-date">'+ all[item]['Time Ranges'][0].startDate.substring(4,5) +'</div>' +
+          '</div>' +
+          '<div class="item-info">' +
+            '<div class="title">'+ all[item].Title +'</div>' +
+            '<div class="time">5:00 PM</div>' +
+            '<div class="location">'+ all[item].Location +'</div>' +
+          '</div>'
+
+      );
     }
   })
 
