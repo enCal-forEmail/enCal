@@ -6,12 +6,8 @@ var user_email;
 var user_email_comma;
 var current_token;
 
+var fb;
 
-window.setInterval(function() {
-  chrome.browserAction.setBadgeText({text:String(notifs)});
-  chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
-  notifs++;
-}, 5000);
 
 if (current_token) {
   chrome.identity.removeCachedAuthToken({ token: current_token }, function(){});
@@ -29,7 +25,7 @@ if (current_token) {
 chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
   if (chrome.runtime.lastError) {
     console.log(chrome.runtime.lastError);
-    changeState(STATE_START);
+    //changeState(STATE_START);
   } else {
     current_token = token;
     console.log('Token acquired:' + current_token +
@@ -47,31 +43,36 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
         user_email = data.email;
         user_email_comma = user_email.replace('.',',')
         console.log(user_email_comma);
+
+        //User authentication with our server
+        $.post(
+          BASE_URL + "/login",
+          {
+            email: user_email,
+            accessToken: current_token
+          },
+          function(data) {
+            console.log("logged in")
+            connectFirebase();
+          }
+        );
       }
     });
-
-    //User authentication with our server
-/*
-    $.post(
-      url: BASE_URL + "/login",
-      data: {
-        email: user_email
-        accessToken: current_token
-      },
-    );
-*/
-
-    changeState(STATE_AUTHTOKEN_ACQUIRED);
   }
 });
 
-var fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/' + user_email_comma);
+function connectFirebase() {
+  fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/' + user_email_comma);
+  console.log("Firebase connected");
+  fb.on('child_added', function (snapshot) {
+    notifs++;
+    chrome.browserAction.setBadgeText({text:String(notifs)});
+    chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+  }, function (errorObject) {
+    console.log('The read failed: ' + errorObject.code);
+  });
+}
 
-fb.on('child_added', function (snapshot) {
-  console.log(snapshot.val());
-}, function (errorObject) {
-  console.log('The read failed: ' + errorObject.code);
-});
 
 function processConflict () {
         console.log("running");
