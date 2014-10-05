@@ -35,6 +35,14 @@ $(document).ready( function() {
     });
   });
 
+  $(".info-icon").on("click", function() {
+    $(".about-modal, .transparent-overlay").addClass("open");
+
+    $(".transparent-overlay").on("click", function() {
+      $(".about-modal, .transparent-overlay").removeClass("open");
+    });
+  });
+
   $("select").on('change', function(){
     checkUserInput(this.value);
   });
