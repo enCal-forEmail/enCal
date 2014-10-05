@@ -8,6 +8,17 @@ $(document).ready( function() {
   });
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
+   chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+      if (chrome.runtime.lastError) {
+        console.log(chrome.runtime.lastError);
+        changeState(STATE_START);
+      } else {
+        console.log('Token acquired:'+token+
+          '. See chrome://identity-internals for details.');
+        changeState(STATE_AUTHTOKEN_ACQUIRED);
+      }
+    });
+
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
     var selectedContent = $(".tab-content[data-type='" + contentType + "']");
