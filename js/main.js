@@ -44,7 +44,6 @@ $(document).ready( function() {
 
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
-<<<<<<< HEAD
   var fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/andrewmillman35@gmail,com');
   fb.once('value', function(snapshot) {
     var all = snapshot.val();
