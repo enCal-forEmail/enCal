@@ -6,6 +6,7 @@ $(document).ready( function() {
            email = request.email;
         });
 
+  //Get number of notifications
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
     if (res) {
@@ -15,7 +16,22 @@ $(document).ready( function() {
     }
   });
 
+  //Clear badge of any number
+  chrome.browserAction.setBadgeText({text:String("")});
+
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
+
+  var fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/andrewmillman35@gmail,com');
+  fb.once('value', function(snapshot) {
+    var all = snapshot.val();
+    for (item in all) {
+      console.log(all[item]);
+    }
+  })
+
+
+
+
 
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
@@ -78,7 +94,7 @@ $(document).ready( function() {
   $("#save-button").on('click',function(){
     console.log("running");
     var title = $("#title").val();
-    var timeDropdown = $("#time-dropdown").find(":selected").text(); 
+    var timeDropdown = $("#time-dropdown").find(":selected").text();
     var time = $("#time").val();
     var location = $("#location").val();
     console.log("You typed: " + title + ", " + timeDropdown + ", " + location);

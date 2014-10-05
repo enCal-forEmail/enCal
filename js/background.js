@@ -70,10 +70,22 @@ function connectFirebase() {
   console.log("Firebase connected");
   fb.on('child_added', function (snapshot) {
     notifs++;
+    console.log("up1");
     chrome.browserAction.setBadgeText({text:String(notifs)});
     chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+
+    var child= snapshot.val();
+
+    console.log(child);
+
   }, function (errorObject) {
     console.log('The read failed: ' + errorObject.code);
   });
+
+  /*var user = fb.child('users').child('user_email_comma');
+  user.child().set({
+    isNew: "1"
+  });
+  console.log(user.child("JYWQME5SoQj10E3OF4k")); */
 }
 
