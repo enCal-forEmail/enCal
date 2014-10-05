@@ -76,6 +76,7 @@ $(document).ready( function() {
     var time = $("#time").val();
     var location = $("#location").val();
     console.log("You typed: " + title + ", " + timeDropdown + ", " + location);
+    $(".edit-item-modal, .transparent-overlay").removeClass("open");
   });
 });
 
