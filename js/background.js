@@ -67,14 +67,18 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
   }
 });
 
+function updateBadge() {
+    console.log("up1");
+    chrome.browserAction.setBadgeText({text:String(notifs)});
+    chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+}
+
 function connectFirebase() {
   fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/' + user_email_comma);
   console.log("Firebase connected");
   fb.on('child_added', function (snapshot) {
     notifs++;
-    console.log("up1");
-    chrome.browserAction.setBadgeText({text:String(notifs)});
-    chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+    updateBadge();
 
     var child= snapshot.val();
 
@@ -91,3 +95,11 @@ function connectFirebase() {
   console.log(user.child("JYWQME5SoQj10E3OF4k")); */
 }
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(request, sender);
+        if (request.command == "clear") {
+            notifs = "";
+            updateBadge();
+        }
+    });
