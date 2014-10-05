@@ -54,10 +54,12 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
           function(data) {
             console.log("logged in")
             connectFirebase();
-              chrome.extension.onConnect.addListener(function(port) {
-                  console.log("Connected .....");
-                  chrome.runtime.sendMessage({email: user_email});
-              });
+              chrome.runtime.onMessage.addListener(
+                  function(request, sender, sendResponse) {
+                      console.log(request, sender);
+                      if (request.command == "email")
+                          sendResponse({email: user_email_comma});
+                  });
           }
         );
       }
