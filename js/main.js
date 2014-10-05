@@ -1,4 +1,10 @@
 $(document).ready( function() {
+    var email;
+
+    chrome.runtime.sendMessage({command: "email"}, function(response) {
+        email = response.email;
+        console.log(email);
+    });
 
   //Get number of notifications
   chrome.browserAction.getBadgeText({}, function(res) {

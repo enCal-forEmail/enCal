@@ -41,7 +41,7 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
       },
       success: function(data) {
         user_email = data.email;
-        user_email_comma = user_email.replace('.',',')
+        user_email_comma = user_email.replace(/\./g, ',')
         console.log(user_email_comma);
 
         //User authentication with our server
@@ -54,6 +54,12 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
           function(data) {
             console.log("logged in")
             connectFirebase();
+              chrome.runtime.onMessage.addListener(
+                  function(request, sender, sendResponse) {
+                      console.log(request, sender);
+                      if (request.command == "email")
+                          sendResponse({email: user_email_comma});
+                  });
           }
         );
       }
@@ -84,10 +90,4 @@ function connectFirebase() {
   });
   console.log(user.child("JYWQME5SoQj10E3OF4k")); */
 }
-
-
-
-
-
-
 
