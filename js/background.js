@@ -50,8 +50,8 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
     //User authentication with our server
 /*
     $.post(
-      BASE_URL + "/login",
-      {
+      url: BASE_URL + "/login",
+      data: {
         email: user_email
         accessToken: current_token
       },
