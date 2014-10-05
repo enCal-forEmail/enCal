@@ -4,7 +4,7 @@
   "name": "enCal",
   "description": "Disrupting the calendar industry",
   "version": "1.0",
-  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://brilliant-fire-8245.firebaseio.com; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com; object-src 'self'",
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -19,6 +19,7 @@
   "background":
   {
     "scripts":[
+      "js/firebase.js",
       "js/jquery-2.1.1.min.js",
       "js/background.js"
     ],
@@ -31,7 +32,7 @@
     "scopes": [
         "https://mail.google.com/",
         "https://www.googleapis.com/auth/calendar",
-        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.email"
     ]
   }
 }

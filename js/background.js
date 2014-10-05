@@ -3,6 +3,7 @@ var notifs = 0;
 var BASE_URL = "http://localhost:3000"
 
 var user_email;
+var user_email_comma;
 var current_token;
 
 
@@ -44,6 +45,8 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
       },
       success: function(data) {
         user_email = data.email;
+        user_email_comma = user_email.replace('.',',')
+        console.log(user_email_comma);
       }
     });
 
@@ -60,6 +63,14 @@ chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 
     changeState(STATE_AUTHTOKEN_ACQUIRED);
   }
+});
+
+var fb = new Firebase('https://brilliant-fire-8245.firebaseio.com/users/' + user_email_comma);
+
+fb.on('child_added', function (snapshot) {
+  console.log(snapshot.val());
+}, function (errorObject) {
+  console.log('The read failed: ' + errorObject.code);
 });
 
 
