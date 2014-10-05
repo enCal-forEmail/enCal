@@ -21,6 +21,15 @@ $(document).ready( function() {
   });
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
+chrome.browserAction.getBadgeText({}, function(res) {
+    console.log(res);
+    if (res) {
+      var recentTab = $(".tab[data-type='Errors'").append('<div class="notif-badge">'+res+'</div>');
+      var badge = recentTab.find(".notif-badge");
+      badge.css("margin-left", -badge.width() / 2 - 3);
+    }
+  });
+  setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
@@ -66,7 +75,3 @@ function checkUserInput(val){
  else
    element.removeClass("open");
 }
-
-$( window ).unload(function() {
-  alert( "Bye now!" );
-});
