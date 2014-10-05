@@ -67,12 +67,21 @@ $(document).ready( function() {
     checkUserInput(this.value);
   });
 
-$(".recent-item").hover(
-  function() {
-  }, function() {
-    $(this).find(".recent-item-marker").fadeOut(500);
+  $(".recent-item").hover(
+    function() {
+    }, function() {
+      $(this).find(".recent-item-marker").fadeOut(500);
   });
 
+  $("#save-button").on('click',function(){
+    console.log("running");
+    var title = $("#title").val();
+    var timeDropdown = $("#time-dropdown").find(":selected").text(); 
+    var time = $("#time").val();
+    var location = $("#location").val();
+    console.log("You typed: " + title + ", " + timeDropdown + ", " + location);
+    $(".edit-item-modal, .transparent-overlay").removeClass("open");
+  });
 });
 
 function checkUserInput(val){
