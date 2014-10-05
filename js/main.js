@@ -1,5 +1,6 @@
 $(document).ready( function() {
 
+  //Get number of notifications
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
     if (res) {
@@ -8,6 +9,9 @@ $(document).ready( function() {
       badge.css("margin-left", -badge.width() / 2 - 3);
     }
   });
+
+  //Clear badge of any number
+  chrome.browserAction.setBadgeText({text:String("")});
 
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 

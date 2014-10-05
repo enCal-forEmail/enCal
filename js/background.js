@@ -66,8 +66,10 @@ function connectFirebase() {
   console.log("Firebase connected");
   fb.on('child_added', function (snapshot) {
     notifs++;
+    console.log("up1");
     chrome.browserAction.setBadgeText({text:String(notifs)});
     chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+    console.log(snapshot.val());
   }, function (errorObject) {
     console.log('The read failed: ' + errorObject.code);
   });
