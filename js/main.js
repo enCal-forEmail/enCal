@@ -1,28 +1,32 @@
 $(document).ready( function() {
 
+  chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+    if (chrome.runtime.lastError) {
+      console.log(chrome.runtime.lastError);
+      changeState(STATE_START);
+    } else {
+      console.log('Token acquired:'+token+
+        '. See chrome://identity-internals for details.');
+      changeState(STATE_AUTHTOKEN_ACQUIRED);
+    }
+  });
+
   chrome.browserAction.getBadgeText({}, function(res) {
     console.log(res);
     if (res) {
-      $(".tab[data-type='Recent'").append('<div class="notif-badge">'+res+'</div>');
+      var recentTab = $(".tab[data-type='Recent'").append('<div class="notif-badge">'+res+'</div>');
+      var badge = recentTab.find(".notif-badge");
+      badge.css("margin-left", -badge.width() / 2 - 3);
     }
   });
   setTimeout(function(){ $(".notif-badge").fadeOut(500) }, 5000);
 
-   chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
-      if (chrome.runtime.lastError) {
-        console.log(chrome.runtime.lastError);
-        changeState(STATE_START);
-      } else {
-        console.log('Token acquired:'+token+
-          '. See chrome://identity-internals for details.');
-        changeState(STATE_AUTHTOKEN_ACQUIRED);
-      }
-    });
 
   $(".tab").on("click", function() {
     var contentType = $(this).data("type");
     var selectedContent = $(".tab-content[data-type='" + contentType + "']");
     $(".tab, .tab-content").removeClass("active");
+    $(".tab-underline").removeClass("Recent, Errors").addClass(contentType);
     $(this).addClass("active");
     selectedContent.addClass("active");
   });
