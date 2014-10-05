@@ -74,14 +74,6 @@ function connectFirebase() {
 }
 
 
-function processConflict () {
-        console.log("running");
-    var title = document.getElementByID("title");
-    var time = document.getElementByID("time");
-    var location = document.getElementByID("location"); 
-    console.log("You typed: " + title + ", " + time + ", " + location);
-}
-
 
 
 
