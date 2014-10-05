@@ -17,7 +17,10 @@
   ],
   "background":
   {
-    "scripts":["js/background.js"],
+    "scripts":[
+      "js/jquery-2.1.1.min.js",
+      "js/background.js"
+    ],
     "persistent": true
   },
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgnX69xrusQdOa921qFRLU5dRYtXXAaT44Dm4Bqe1f9jXR56eq1OZ2JlTA3lIzzVGBU668o9RXS2EIp/Sx+SHKY7Cj2PrX0J2Y4tKiGATcpbjO/6I8Z4hYwSpK8o5LxZgpqZHlXYyV5YWrWXxGmyTDE/y+KdDu9nbLplOa3B9rcD9lUUGR3C5R4XlSTQYc8qSJFKUaT94zX/PTVVOHeoxi5Lt3UZl2IG7d5mlm6MwlXA1sM/hJGgrzuNgvHvJyzZoP9fpjQ3H6TfpMpfRvyicfi7mlUMfN4ml2KnXA3KqByyvgsk6qOlSj0WDGpD9Js7CeVnoVl/HShwCyzTjKVuwSwIDAQAB",
@@ -27,7 +30,7 @@
     "scopes": [
         "https://mail.google.com/",
         "https://www.googleapis.com/auth/calendar",
-        "https://www.googleapis.com/auth/userinfo.email"
+        "https://www.googleapis.com/auth/userinfo.email",
     ]
   }
 }
